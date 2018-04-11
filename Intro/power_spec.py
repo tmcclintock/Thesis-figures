@@ -89,9 +89,9 @@ if __name__ == "__main__":
     ax.legend(frameon=False)
     
     plt.subplots_adjust(wspace=0)
-    axes[0].set_xlabel(r"$k\ {\rm Mpc}^{-1}$") 
-    axes[1].set_xlabel(r"$k\ {\rm Mpc}^{-1}$")
-    axes[0].set_ylabel(r"$P(k)\  {\rm Mpc}^{3}$")
+    axes[0].set_xlabel(r"$k\ [{\rm Mpc}^{-1}]$") 
+    axes[1].set_xlabel(r"$k\ [{\rm Mpc}^{-1}]$")
+    axes[0].set_ylabel(r"$P(k)\  [{\rm Mpc}^{3}]$")
     axes[0].set_xlim(min(k), max(k))
     axes[1].set_xlim(min(k), max(k))
     fig.savefig("powerspectrum_figure.pdf", bbox_inches='tight')

@@ -39,7 +39,7 @@ if __name__ == "__main__":
     ax.set_ylabel(r"Growth function $g(a)/g(1)$")
 
 
-    ax.plot(sfs, sfs, label=r"$Eds, \Omega_m=1$")
+    ax.plot(sfs, sfs, label=r"${\rm EdS}, \Omega_m=1$")
     ax.legend(frameon=False, fontsize=12)
     fig.savefig("growth_figure.pdf", bbox_inches='tight')
     plt.show()
