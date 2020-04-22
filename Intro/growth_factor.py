@@ -25,13 +25,13 @@ if __name__ == "__main__":
     sfs = np.logspace(-4, 0)
     zs = 1./sfs - 1
     g = calc(zs, 0.3)
-    ax.plot(sfs, g, label=r"$\Omega_m = %.1f\ w=%.0f$"%(0.3, -1))
+    ax.plot(sfs, g, label=r"$\Omega_m = %.1f,\ w=%.0f$"%(0.3, -1))
 
     g = calc(zs, 0.3, -0.7)
-    ax.plot(sfs, g, label=r"$\Omega_m = %.1f\ w=%.1f$"%(0.3, -0.7))
+    ax.plot(sfs, g, label=r"$\Omega_m = %.1f,\ w=%.1f$"%(0.3, -0.7))
 
     g = calc(zs, 0.25)
-    ax.plot(sfs, g, label=r"$\Omega_m = %.1f\ w=%.0f$"%(0.25, -1))
+    ax.plot(sfs, g, label=r"$\Omega_m = %.1f,\ w=%.0f$"%(0.25, -1))
 
     ax.set_xlim(0,1)
     ax.set_ylim(0,1)
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     ax.set_ylabel(r"Growth function $g(a)/g(1)$")
 
 
-    ax.plot(sfs, sfs, label=r"${\rm EdS}, \Omega_m=1$")
+    ax.plot(sfs, sfs, label=r"${\rm EdS},\ \Omega_m=1$")
     ax.legend(frameon=False, fontsize=12)
     fig.savefig("growth_figure.pdf", bbox_inches='tight')
     plt.show()

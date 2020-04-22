@@ -14,7 +14,7 @@ cosmology.addCosmology('fiducial', cos)
 cosmology.setCosmology('fiducial')
 
 z = 0
-r = np.logspace(-2, np.log10(200), 1000)
+r = np.logspace(-2, np.log10(1000), 1000)
 k = np.loadtxt("datafiles/knl.txt")
 P = np.loadtxt("datafiles/pnl.txt")
 klin = np.loadtxt("datafiles/klin.txt")
@@ -28,20 +28,21 @@ bias = ct.bias.bias_at_M(M, klin, Plin, Om)
 xi_2halo = ct.xi.xi_2halo(bias, xi_mm)
 xi_hm    = ct.xi.xi_hm(xi_nfw, xi_2halo)
 
+Rp = np.logspace(-2, 2.4, 1000)
+Sigma  = ct.deltasigma.Sigma_at_R(Rp, r, xi_hm, M, c, Om)
+Sigma_nfw = ct.deltasigma.Sigma_nfw_at_R(Rp, M, c, Om)
+
 fig, ax = plt.subplots(1)
 
-ax.loglog(r/h, xi_nfw, c='r', label=r"NFW")
-ax.loglog(r/h, xi_mm, c='b', label=r"Matter")
-ax.loglog(r/h, xi_2halo, c='k', ls='--', label=r"$b(M)\xi_{mm}$")
+ax.loglog(Rp/h, Sigma, c='k', label=r"$\max(\xi_{\rm NFW},b(M)\xi_{mm})$")
+ax.loglog(Rp/h, Sigma_nfw, c='r', label=r"NFW")
 
 ax.legend(frameon=False)
-ax.set_xlabel(r"$r\ [{\rm Mpc}]$")
-#ax.set_ylabel(r"Correlation function $\xi$")
-ax.set_ylabel(r"$\xi$")
-
-ax.set_xlim(min(r/h), max(r/h))
+ax.set_xlabel(r"$R\ [{\rm Mpc}]$")
+ax.set_ylabel(r"$\Sigma\ [{\rm M_\odot/pc^2}]$")
+ax.set_xlim(min(Rp/h), 154)#max(Rp/h))
 
 #ax.set_yscale('symlog')
 #ax.axhline(0, c='k')
-fig.savefig("correlation_function_figure.pdf", bbox_inches='tight')
+fig.savefig("sigmaR_figure.pdf", bbox_inches='tight')
 plt.show()

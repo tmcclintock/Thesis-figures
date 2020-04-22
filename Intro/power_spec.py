@@ -68,14 +68,14 @@ if __name__ == "__main__":
     z = 0
     ax = axes[0]
     Plin = calc(params, 0, reset=False)
-    ax.loglog(k, Plin, c=colors[0], label=r'$\Omega_m = %.2f\ \sigma_8=%.2f$'%(0.3, cosmo.sigma8()))
+    ax.loglog(k, Plin, c=colors[0], label=r'$\Omega_m = %.2f,\ \sigma_8=%.2f$'%(0.3, cosmo.sigma8()))
     
     Om = 0.35
     params['Omega_cdm'] = Om - 0.05
     cosmo.set(params)
     cosmo.compute()
     Plin = calc(params, 0, reset=False)
-    ax.loglog(k, Plin, c=colors[1], label=r'$\Omega_m = %.2f\ \sigma_8=%.2f$'%(Om, cosmo.sigma8()))
+    ax.loglog(k, Plin, c=colors[1], label=r'$\Omega_m = %.2f,\ \sigma_8=%.2f$'%(Om, cosmo.sigma8()))
 
     Om = 0.3
     params['Omega_cdm'] = Om - 0.05
@@ -83,7 +83,7 @@ if __name__ == "__main__":
     cosmo.set(params)
     cosmo.compute()
     Plin = calc(params, 0, reset=False)
-    ax.loglog(k, Plin, c=colors[2], label=r'$\Omega_m = %.2f\ \sigma_8=%.2f$'%(Om, cosmo.sigma8()))
+    ax.loglog(k, Plin, c=colors[2], label=r'$\Omega_m = %.2f,\ \sigma_8=%.2f$'%(Om, cosmo.sigma8()))
 
     
     ax.legend(frameon=False)
